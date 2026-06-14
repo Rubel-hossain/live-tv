@@ -122,7 +122,8 @@ FIFA-LiveTV-main/
 - `npm start` - Start production server
 - `npm run cf:build` - Build with the Cloudflare OpenNext adapter
 - `npm run preview` - Preview the Cloudflare worker locally
-- `npm run deploy` - Deploy to Cloudflare Workers
+- `npm run deploy` - Deploy the OpenNext build to a Cloudflare Pages project
+- `npm run deploy:worker` - Deploy to a standalone Cloudflare Worker
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
@@ -228,7 +229,8 @@ The application includes several security measures:
 3. Set the build command to `npm run cf:build`
 4. If Cloudflare asks for the build output directory, use `.open-next/assets`
 5. The repository already includes `wrangler.jsonc` and `open-next.config.ts` for the OpenNext adapter
-6. Redeploy after saving the variable
+6. For manual CLI deploys to Pages, run `npm run deploy`
+7. Redeploy after saving the variable
 
 #### Docker
 
