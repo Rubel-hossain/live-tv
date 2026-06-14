@@ -120,10 +120,14 @@ FIFA-LiveTV-main/
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
+- `npm run cf:build` - Build with the Cloudflare OpenNext adapter
+- `npm run preview` - Preview the Cloudflare worker locally
+- `npm run deploy` - Deploy to Cloudflare Workers
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 - `npm run type-check` - Run TypeScript type checking
+- `npm run cf-typegen` - Generate Cloudflare env types
 - `npm test` - Run tests
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:coverage` - Run tests with coverage
@@ -221,8 +225,9 @@ The application includes several security measures:
 
 1. Connect your GitHub repository in Cloudflare
 2. Set `PLAYLIST_URL` in the project environment variables
-3. Use the Next.js framework preset / standard build command
-4. Redeploy after saving the variable
+3. The repository already includes `wrangler.jsonc` and `open-next.config.ts` for the OpenNext adapter
+4. Install dependencies and use the Cloudflare build/deploy scripts from `package.json`
+5. Redeploy after saving the variable
 
 #### Docker
 

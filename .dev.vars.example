@@ -1,0 +1,3 @@
+NEXTJS_ENV=development
+# Optional: use a remote playlist while previewing the Cloudflare worker locally.
+# PLAYLIST_URL=https://raw.githubusercontent.com/<owner>/<repo>/<branch>/Fifa%20world%20cup.m3u

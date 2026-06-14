@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   
   // Enable experimental features for better performance
   experimental: {
@@ -61,5 +63,14 @@ const nextConfig: NextConfig = {
     ];
   }
 };
+
+try {
+  const { initOpenNextCloudflareForDev } = require("@opennextjs/cloudflare") as {
+    initOpenNextCloudflareForDev?: () => void;
+  };
+  initOpenNextCloudflareForDev?.();
+} catch {
+  // The adapter is installed in CI/deployment environments; keep local builds working meanwhile.
+}
 
 export default nextConfig;
