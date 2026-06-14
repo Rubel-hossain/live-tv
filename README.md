@@ -44,8 +44,9 @@ npm install
 ```
 
 3. Configure your playlist:
-   - Place your M3U playlist file in the project root
-   - Or set the `PLAYLIST_FILE` environment variable (see Configuration)
+   - For localhost: place your M3U playlist file in the project root
+   - For Vercel/Cloudflare: set `PLAYLIST_URL` to a raw GitHub URL for your `.m3u` file
+   - Or set the `PLAYLIST_FILE` environment variable for local file loading (see Configuration)
 
 4. Run the development server:
 ```bash
@@ -67,6 +68,7 @@ cp .env.example .env.local
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `PLAYLIST_FILE` | Path to your M3U playlist file | `Fifa world cup.m3u` |
+| `PLAYLIST_URL` | Remote playlist URL for deployments | unset |
 | `NEXT_PUBLIC_APP_NAME` | Application name | `LiveTV` |
 | `NEXT_PUBLIC_APP_VERSION` | Application version | `1.0.0` |
 | `NEXT_PUBLIC_LOG_LEVEL` | Logging level (debug, info, warn, error) | `info` |
@@ -188,6 +190,16 @@ npm run build
 
 Ensure all required environment variables are set in your production environment.
 
+### Recommended Deploy Setup
+
+For GitHub-connected deployments, host the playlist from your repository and set:
+
+```bash
+PLAYLIST_URL=https://raw.githubusercontent.com/<owner>/<repo>/<branch>/Fifa%20world%20cup.m3u
+```
+
+This avoids runtime filesystem access, which is the main reason local-only playlist loading can fail on Vercel or Cloudflare.
+
 ### Security
 
 The application includes several security measures:
@@ -202,8 +214,15 @@ The application includes several security measures:
 #### Vercel
 
 1. Connect your repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy
+2. Set `PLAYLIST_URL` in the Vercel project settings
+3. Redeploy
+
+#### Cloudflare
+
+1. Connect your GitHub repository in Cloudflare
+2. Set `PLAYLIST_URL` in the project environment variables
+3. Use the Next.js framework preset / standard build command
+4. Redeploy after saving the variable
 
 #### Docker
 
@@ -241,8 +260,9 @@ CMD ["node", "server.js"]
 
 ### Playlist Not Loading
 
-- Ensure your M3U file is in the project root directory
-- Check the `PLAYLIST_FILE` environment variable
+- For deployed apps, set `PLAYLIST_URL` to a raw GitHub URL
+- For localhost, ensure your M3U file is in the project root directory
+- Check the `PLAYLIST_FILE` or `PLAYLIST_URL` environment variable
 - Verify the file format is valid M3U
 - Check server logs for error messages
 

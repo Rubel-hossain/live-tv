@@ -4,7 +4,7 @@ import { isValidStreamUrl } from "@/lib/security";
 import { logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 function inferContentType(url: string): string {
   if (/\.m3u8(?:[?#]|$)/i.test(url)) return "application/vnd.apple.mpegurl";

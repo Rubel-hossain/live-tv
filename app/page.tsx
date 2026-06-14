@@ -23,7 +23,8 @@ export default async function Home() {
         </div>
         <h1>Playlist Not Found</h1>
         <p>
-          Could not load the M3U playlist file. Please ensure your playlist file is in the project root.
+          Could not load the playlist. For deployments, set `PLAYLIST_URL` to a raw GitHub
+          playlist URL. For localhost, keep your M3U file in the project root.
         </p>
       </main>
     );
