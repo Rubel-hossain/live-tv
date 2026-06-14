@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Production
+build/
+dist/
+
+# Environment variables
+.env
+.env*.local
+.env.production
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# Security
+*.key
+*.pem
+credentials.json
+service-account.json
