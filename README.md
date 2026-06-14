@@ -223,11 +223,12 @@ The application includes several security measures:
 
 #### Cloudflare
 
-1. Connect your GitHub repository in Cloudflare
+1. Connect your GitHub repository in Cloudflare Pages
 2. Set `PLAYLIST_URL` in the project environment variables
-3. The repository already includes `wrangler.jsonc` and `open-next.config.ts` for the OpenNext adapter
-4. Install dependencies and use the Cloudflare build/deploy scripts from `package.json`
-5. Redeploy after saving the variable
+3. Set the build command to `npm run cf:build`
+4. If Cloudflare asks for the build output directory, use `.open-next/assets`
+5. The repository already includes `wrangler.jsonc` and `open-next.config.ts` for the OpenNext adapter
+6. Redeploy after saving the variable
 
 #### Docker
 
